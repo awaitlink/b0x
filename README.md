@@ -23,7 +23,7 @@ Supported formats:
 $ b0x 0xC0FFEE
 ```
 
-![screenshot](img/0xc0ffee.png)
+![screenshot][demo-0xC0FFEE]
 
 ##### Strings
 
@@ -31,7 +31,7 @@ $ b0x 0xC0FFEE
 $ b0x "StRiNg"
 ```
 
-![screenshot](img/string.png)
+![screenshot][demo-string]
 
 [crates.io/b0x]: https://crates.io/crates/b0x
 
@@ -41,3 +41,6 @@ $ b0x "StRiNg"
 [badges/version]: https://img.shields.io/crates/v/b0x.svg?style=for-the-badge
 [badges/downloads]: https://img.shields.io/crates/d/b0x.svg?style=for-the-badge
 [badges/license]: https://img.shields.io/crates/l/b0x.svg?style=for-the-badge
+
+[demo-0xC0FFEE]: https://raw.githubusercontent.com/u32i64/b0x/master/img/0xc0ffee.png
+[demo-string]: https://raw.githubusercontent.com/u32i64/b0x/master/img/string.png
