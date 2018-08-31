@@ -20,7 +20,7 @@ impl Config {
         self.ignored_passes.contains(&String::from(pass))
     }
 
-    /// Returns `the input stored in this `Config`
+    /// Returns the `input` stored in this `Config`
     pub fn input(&self) -> &String {
         &self.input
     }

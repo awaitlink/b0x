@@ -36,8 +36,8 @@
 //!
 //! ```console
 //! $ b0x "StRiNg"
-//! pass info
 //! found string(StRiNg)
+//! pass info
 //! len 6
 //! bytes [83, 116, 82, 105, 78, 103]
 //! ascii? true
@@ -67,7 +67,7 @@ fn try_prefix(input: &str, prefix: &str, radix: u32, config: &Config) -> bool {
     false
 }
 
-/// Given a `Config`, try to parse it as a number and print information.
+/// Given a `Config`, try to parse the input stored in it as a number and print information.
 /// If the input can't be parsed as a `u128`, fall back to String.
 pub fn run(config: Config) {
     let input = config.input();
