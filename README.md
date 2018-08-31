@@ -11,6 +11,11 @@ A simple CLI tool to display information about the provided input.
 $ cargo install b0x
 ```
 
+### Updating
+```console
+$ cargo install b0x --force
+```
+
 ### Usage
 #### Numbers
 Supported formats:
