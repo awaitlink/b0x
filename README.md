@@ -12,7 +12,7 @@ $ cargo install b0x
 ```
 
 ### Usage
-##### Numbers
+#### Numbers
 Supported formats:
 - Decimal: `42`
 - Binary: `0b101010`
@@ -25,10 +25,10 @@ $ b0x 0xC0FFEE
 
 ![screenshot][demo-0xC0FFEE]
 
-##### Strings
+#### Strings
 
 ```console
-$ b0x "StRiNg"
+$ b0x "TeSt StRiNg"
 ```
 
 ![screenshot][demo-string]
