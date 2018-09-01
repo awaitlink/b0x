@@ -19,7 +19,7 @@ fn info(string: &String) {
     let upper = string.to_uppercase();
     let lower = string.to_lowercase();
 
-    info!("len", len);
+    info!("len(bytes)", len);
     info!("bytes", bytes);
     info!("ascii?", is_ascii);
     info!("upper", upper);

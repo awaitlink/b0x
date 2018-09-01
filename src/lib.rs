@@ -38,7 +38,7 @@
 //! $ b0x "StRiNg"
 //! found string(StRiNg)
 //! pass info
-//! len 6
+//! len(bytes) 6
 //! bytes [83, 116, 82, 105, 78, 103]
 //! ascii? true
 //! upper STRING
