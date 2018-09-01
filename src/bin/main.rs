@@ -12,13 +12,15 @@ fn main() {
         .about(crate_description!())
         .arg(
             Arg::with_name("input")
-                .help("Input data. Supported formats:
+                .help(
+                    "Input data. Supported formats:
 ⋅ String
 ⋅ Integer
     ⋅ Decimal:     42
     ⋅ Binary:      0b101010
     ⋅ Octal:       0o52
-    ⋅ Hexadecimal: 0x2A")
+    ⋅ Hexadecimal: 0x2A",
+                )
                 .required(true)
                 .index(1),
         )
@@ -29,7 +31,17 @@ fn main() {
                 .long("ignore")
                 .multiple(true)
                 .takes_value(true)
-                .possible_values(&["radix", "misc", "info"])
+                .possible_values(&[
+                    // integer
+                    "radix",
+                    "misc",
+                    // string
+                    "structure",
+                    "graphemes",
+                    "words",
+                    "bytes",
+                    "modifications",
+                ])
                 .use_delimiter(true),
         )
         .get_matches();

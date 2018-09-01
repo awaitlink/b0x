@@ -48,11 +48,11 @@ impl<'a, T> PassSequence<'a, T> {
     pub fn run(&self, input: &T) {
         for pass in self.passes.iter() {
             if !self.config.is_ignored(&pass.name) {
-                println!("{} {}", "pass".white().bold(), &pass.name.magenta().bold());
+                println!("{} {}", "-->".white().bold(), &pass.name.magenta().bold());
 
                 pass.run(input);
             } else {
-                println!("{} {} {}", "pass".white().bold(), &pass.name.magenta().bold(), "ignored".white().bold());
+                println!("{} {} {}", "--x".white().bold(), &pass.name.magenta().bold(), "ignored".white().bold());
             }
         }
     }

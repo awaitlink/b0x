@@ -18,7 +18,7 @@
 //! ```console
 //! $ b0x 0xC0FFEE
 //! found u128(12648430)
-//! pass radix
+//! --> radix
 //! bin 110000001111111111101110
 //!   ├ ones 16
 //!   ├ zeros 8 (112)
@@ -28,24 +28,33 @@
 //! dec 12648430
 //! hex c0ffee
 //! HEX C0FFEE
-//! pass misc
+//! --> misc
 //! next 2^x 16777216
 //! ```
 //!
 //! #### Strings
 //!
 //! ```console
-//! $ b0x "StRiNg"
-//! found string(StRiNg)
-//! pass info
-//! len(bytes) 6
-//! bytes [83, 116, 82, 105, 78, 103]
+//! $ b0x "TeSt StRiNg"
+//! found string(TeSt StRiNg)
+//! --> structure
 //! ascii? true
-//! upper STRING
-//! lower string
+//! --> graphemes
+//!  ["T", "e", "S", "t", " ", "S", "t", "R", "i", "N", "g"]
+//! len 11
+//! --> words
+//!  ["TeSt", "StRiNg"]
+//! len 2
+//! --> bytes
+//!  [84, 101, 83, 116, 32, 83, 116, 82, 105, 78, 103]
+//! len 11
+//! --> modifications
+//! upper TEST STRING
+//! lower test string
 //! ```
 
 extern crate colored;
+extern crate unicode_segmentation;
 
 mod color;
 pub mod pass;

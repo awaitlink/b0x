@@ -4,7 +4,7 @@
 [![downloads][badges/downloads]][crates.io/b0x]
 [![license][badges/license]][license]
 
-A simple CLI tool to display information about the provided input.
+A simple CLI tool to display information about the provided input (integers or strings).
 
 ### Installation
 ```console
