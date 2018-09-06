@@ -28,7 +28,7 @@ fn radix(integer: &u128) {
     info!("  ├ ones", ones);
 
     println!(
-        "{} {} ({})",
+        "   {} {} ({})",
         "  ├ zeros".blue().bold(),
         (zeros - leading_zeros).to_string().green().bold(),
         zeros.to_string().green().bold()
@@ -49,5 +49,5 @@ fn misc(integer: &u128) {
         None => String::from("n/a").cyan().bold(),
     };
 
-    println!("{} {}", "next 2^x".blue().bold(), next);
+    println!("   {} {}", "next 2^x".blue().bold(), next);
 }

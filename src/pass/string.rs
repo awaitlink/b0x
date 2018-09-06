@@ -21,7 +21,7 @@ fn structure(string: &String) {
 fn graphemes(string: &String) {
     let graphemes: Vec<&str> = UnicodeSegmentation::graphemes(string.as_str(), true).collect();
 
-    info!("", format!("{:?}", graphemes));
+    info!("array", format!("{:?}", graphemes));
     info!("len", graphemes.len());
 }
 
@@ -29,7 +29,7 @@ fn graphemes(string: &String) {
 fn words(string: &String) {
     let words: Vec<&str> = UnicodeSegmentation::unicode_words(string.as_str()).collect();
 
-    info!("", format!("{:?}", words));
+    info!("array", format!("{:?}", words));
     info!("len", words.len());
 }
 
@@ -37,7 +37,7 @@ fn words(string: &String) {
 fn bytes(string: &String) {
     let bytes = string.as_bytes();
 
-    info!("", format!("{:?}", bytes));
+    info!("array", format!("{:?}", bytes));
     info!("len", string.len());
 }
 

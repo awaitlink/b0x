@@ -44,15 +44,15 @@ impl<'a, T> PassSequence<'a, T> {
         self.passes.push(pass);
     }
 
-    /// Run passes in the sequence which are not ignored
+    /// Run passes in the sequence (except ignored ones)
     pub fn run(&self, input: &T) {
         for pass in self.passes.iter() {
             if !self.config.is_ignored(&pass.name) {
-                println!("{} {}", "-->".white().bold(), &pass.name.magenta().bold());
+                println!("{} {}", "➔".white().bold(), &pass.name.magenta().bold());
 
                 pass.run(input);
             } else {
-                println!("{} {} {}", "--x".white().bold(), &pass.name.magenta().bold(), "ignored".white().bold());
+                println!("{} {} {}", "x".white().bold(), &pass.name.magenta().bold(), "ignored".white().bold());
             }
         }
     }
@@ -71,7 +71,7 @@ macro_rules! pass_sequence {
 macro_rules! info {
     ($name:expr, $value:expr) => {
         println!(
-            "{} {}",
+            "   {} {}",
             $name.to_string().blue().bold(),
             $value.to_string().green().bold()
         )
