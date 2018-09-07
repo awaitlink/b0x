@@ -1,6 +1,6 @@
 [package]
 name = "b0x"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 description = "A simple CLI tool to display information about the provided input (integers or strings)."
 exclude = ["img/*"]
