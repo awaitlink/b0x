@@ -1,9 +1,7 @@
 //! Deals with strings (`String`)
 
-use super::{Pass, PassSequence};
+use super::*;
 use color;
-use colored::*;
-use config::Config;
 use unicode_segmentation::UnicodeSegmentation;
 
 /// Run all passes with this `String`.

@@ -3,6 +3,8 @@
 use super::colored::*;
 use config::Config;
 
+const INFO_INDENT: &'static str = "   ";
+
 /// A pass
 struct Pass<T> {
     exec: Box<Fn(&T)>,
@@ -52,7 +54,7 @@ impl<'a, T> PassSequence<'a, T> {
 
                 pass.run(input);
             } else {
-                println!("{} {} {}", "x".white().bold(), &pass.name.magenta().bold(), "ignored".white().bold());
+                println!("{} {} {}", "✘".white().bold(), &pass.name.magenta().bold(), "ignored".white().bold());
             }
         }
     }
@@ -68,10 +70,17 @@ macro_rules! pass_sequence {
     };
 }
 
+macro_rules! indent_println {
+    ($( $args:expr ),*) => {
+        print!("{}", INFO_INDENT);
+        println!($( $args ),*);
+    };
+}
+
 macro_rules! info {
     ($name:expr, $value:expr) => {
-        println!(
-            "   {} {}",
+        indent_println!(
+            "{} {}",
             $name.to_string().blue().bold(),
             $value.to_string().green().bold()
         )

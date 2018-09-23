@@ -1,9 +1,7 @@
 //! Deals with unsigned integers (`u128`)
 
-use super::{Pass, PassSequence};
+use super::*;
 use color;
-use colored::*;
-use config::Config;
 
 /// Run all passes with this `u128`.
 pub fn run(integer: u128, config: &Config) {
@@ -27,8 +25,8 @@ fn radix(integer: &u128) {
     info!("bin", bin);
     info!("  ├ ones", ones);
 
-    println!(
-        "   {} {} ({})",
+    indent_println!(
+        "{} {} ({})",
         "  ├ zeros".blue().bold(),
         (zeros - leading_zeros).to_string().green().bold(),
         zeros.to_string().green().bold()
