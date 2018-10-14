@@ -6,7 +6,7 @@
 //! ```
 //!
 //! # Usage
-//! While you don't see it below, it prints everything in color.
+//! While you can't see it below, it prints everything in color.
 //!
 //! #### Numbers
 //! Supported formats:
@@ -18,18 +18,22 @@
 //! ```console
 //! $ b0x 0xC0FFEE
 //! found u128(12648430)
-//! --> radix
-//! bin 110000001111111111101110
-//!   ├ ones 16
-//!   ├ zeros 8 (112)
-//!   ├ leading zeros 104
-//!   └ trailing zeros 1
-//! oct 60177756
-//! dec 12648430
-//! hex c0ffee
-//! HEX C0FFEE
-//! --> misc
-//! next 2^x 16777216
+//! ➔ radix
+//!    bin 110000001111111111101110
+//!      ├ ones 16
+//!      ├ zeros 8 (112)
+//!      ├ leading zeros 104
+//!      └ trailing zeros 1
+//!    oct 60177756
+//!    dec 12648430
+//!    hex c0ffee
+//!    HEX C0FFEE
+//! ➔ prime
+//!    prime? false
+//! ➔ misc
+//!    perfect a^k 12648430 ^ 1
+//!    2^k? false
+//!    next 2^k 16777216
 //! ```
 //!
 //! #### Strings
@@ -37,28 +41,29 @@
 //! ```console
 //! $ b0x "TeSt StRiNg"
 //! found string(TeSt StRiNg)
-//! --> structure
+//! ➔ structure
 //! ascii? true
-//! --> graphemes
-//!  ["T", "e", "S", "t", " ", "S", "t", "R", "i", "N", "g"]
+//! ➔ graphemes
+//! array ["T", "e", "S", "t", " ", "S", "t", "R", "i", "N", "g"]
 //! len 11
-//! --> words
-//!  ["TeSt", "StRiNg"]
+//! ➔ words
+//! array ["TeSt", "StRiNg"]
 //! len 2
-//! --> bytes
-//!  [84, 101, 83, 116, 32, 83, 116, 82, 105, 78, 103]
+//! ➔ bytes
+//! array [84, 101, 83, 116, 32, 83, 116, 82, 105, 78, 103]
 //! len 11
-//! --> modifications
+//! ➔ modifications
 //! upper TEST STRING
 //! lower test string
 //! ```
 
 extern crate colored;
+extern crate primal;
 extern crate unicode_segmentation;
 
 mod color;
-pub mod pass;
 pub mod config;
+pub mod pass;
 
 use config::Config;
 

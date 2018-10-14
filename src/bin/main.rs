@@ -34,7 +34,8 @@ fn main() {
                 .possible_values(&[
                     // integer
                     "radix",
-                    "misc",
+                    "prime",
+                    "power",
                     // string
                     "structure",
                     "graphemes",

@@ -2,11 +2,12 @@
 
 use super::*;
 use color;
+use primal::{as_perfect_power, is_prime};
 
 /// Run all passes with this `u128`.
 pub fn run(integer: u128, config: &Config) {
     color::found(&integer.to_string(), "u128");
-    pass_sequence!(&integer, config; radix, misc);
+    pass_sequence!(&integer, config; radix, prime, power);
 }
 
 /// Print this `u128` in different radixes.
@@ -23,7 +24,7 @@ fn radix(integer: &u128) {
     let trailing_zeros = integer.trailing_zeros();
 
     info!("bin", bin);
-    info!("  ├ ones", ones);
+    info!(2; "├ ones", ones);
 
     indent_println!(
         "{} {} ({})",
@@ -32,20 +33,43 @@ fn radix(integer: &u128) {
         zeros.to_string().green().bold()
     );
 
-    info!("  ├ leading zeros", leading_zeros);
-    info!("  └ trailing zeros", trailing_zeros);
+    info!(2; "├ leading zeros", leading_zeros);
+    info!(2; "└ trailing zeros", trailing_zeros);
     info!("oct", oct);
     info!("dec", dec);
     info!("hex", hex);
     info!("HEX", hex_upper);
 }
 
-/// Print misc information about this `u128`.
-fn misc(integer: &u128) {
-    let next = match integer.checked_next_power_of_two() {
-        Some(v) => v.to_string().green().bold(),
-        None => String::from("n/a").cyan().bold(),
-    };
+/// Print if this `u128` is prime.
+fn prime(integer: &u128) {
+    if *integer <= (u64::max_value() as u128) {
+        info!("prime?", is_prime(*integer as u64));
+    } else {
+        na!("prime?");
+    }
+}
 
-    println!("   {} {}", "next 2^x".blue().bold(), next);
+/// Print information about this `u128` related to powers.
+fn power(integer: &u128) {
+    if *integer <= (u64::max_value() as u128) {
+        let perfect_power = as_perfect_power(*integer as u64);
+        info!("perfect a^k", format!("{} ^ {}", perfect_power.0, perfect_power.1));
+    } else {
+        na!("perfect a^k");
+    }
+
+    let is_power_of_two = integer.is_power_of_two();
+    info!("2^k?", is_power_of_two);
+
+    // If `integer` is already a power of two, find the actual next one.
+    match (if is_power_of_two {
+        integer.saturating_add(1)
+    } else {
+        *integer
+    }).checked_next_power_of_two()
+    {
+        Some(v) => info!("next 2^k", v),
+        None => na!("next 2^k"),
+    };
 }

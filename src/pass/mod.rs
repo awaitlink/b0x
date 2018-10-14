@@ -54,7 +54,12 @@ impl<'a, T> PassSequence<'a, T> {
 
                 pass.run(input);
             } else {
-                println!("{} {} {}", "✘".white().bold(), &pass.name.magenta().bold(), "ignored".white().bold());
+                println!(
+                    "{} {} {}",
+                    "✘".white().bold(),
+                    &pass.name.magenta().bold(),
+                    "ignored".white().bold()
+                );
             }
         }
     }
@@ -66,24 +71,40 @@ macro_rules! pass_sequence {
 
         $( seq.add_pass(Pass::new(Box::new($pass), stringify!($pass))); )*
 
-        seq.run($input);
+        seq.run($input)
     };
 }
 
 macro_rules! indent_println {
-    ($( $args:expr ),*) => {
-        print!("{}", INFO_INDENT);
-        println!($( $args ),*);
+    ($add_indent_level:expr; $( $args:expr ),*) => {
+        println!("{}{}{}", INFO_INDENT, " ".repeat($add_indent_level), format!($( $args ),*))
     };
+
+    ($( $args:expr ),*) => {
+        indent_println!(0; $( $args ),*)
+    }
 }
 
 macro_rules! info {
-    ($name:expr, $value:expr) => {
+    ($add_indent_level:expr; $name:expr, $value:expr) => {
         indent_println!(
+            $add_indent_level;
             "{} {}",
             $name.to_string().blue().bold(),
             $value.to_string().green().bold()
         )
+    };
+    ($name:expr, $value:expr) => {
+        info!(0; $name, $value)
+    };
+}
+
+macro_rules! na {
+    ($add_indent_level:expr; $name:expr) => {
+        info!($add_indent_level; $name, "n/a".cyan().bold())
+    };
+    ($name:expr) => {
+        na!(0; $name)
     };
 }
 
