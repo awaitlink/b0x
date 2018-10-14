@@ -42,19 +42,19 @@
 //! $ b0x "TeSt StRiNg"
 //! found string(TeSt StRiNg)
 //! ➔ structure
-//! ascii? true
+//!    ascii? true
 //! ➔ graphemes
-//! array ["T", "e", "S", "t", " ", "S", "t", "R", "i", "N", "g"]
-//! len 11
+//!    array ["T", "e", "S", "t", " ", "S", "t", "R", "i", "N", "g"]
+//!    len 11
 //! ➔ words
-//! array ["TeSt", "StRiNg"]
-//! len 2
+//!    array ["TeSt", "StRiNg"]
+//!    len 2
 //! ➔ bytes
-//! array [84, 101, 83, 116, 32, 83, 116, 82, 105, 78, 103]
-//! len 11
+//!    array [84, 101, 83, 116, 32, 83, 116, 82, 105, 78, 103]
+//!    len 11
 //! ➔ modifications
-//! upper TEST STRING
-//! lower test string
+//!    upper TEST STRING
+//!    lower test string
 //! ```
 
 extern crate colored;
