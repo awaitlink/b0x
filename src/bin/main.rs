@@ -14,12 +14,12 @@ fn main() {
             Arg::with_name("input")
                 .help(
                     "Input data. Supported formats:
-⋅ String
-⋅ Integer
-    ⋅ Decimal:     42
-    ⋅ Binary:      0b101010
-    ⋅ Octal:       0o52
-    ⋅ Hexadecimal: 0x2A",
+• String
+• Integer
+    • Decimal:     42
+    • Binary:      0b101010
+    • Octal:       0o52
+    • Hexadecimal: 0x2A",
                 )
                 .required(true)
                 .index(1),
