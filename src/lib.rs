@@ -84,20 +84,30 @@ fn try_prefix(input: &str, prefix: &str, radix: u32, config: &Config) -> bool {
     false
 }
 
+macro_rules! try_prefix_seq {
+    {$input:expr, $config:expr, $ending:expr; $prefix:expr, $radix:expr, $($tail:tt)*} => {
+        if !try_prefix($input, $prefix, $radix, $config) {
+            try_prefix_seq! { $input, $config, $ending; $($tail)* }
+        }
+    };
+
+    {$input:expr, $config:expr, $ending:expr;} => {
+        $ending
+    };
+}
+
 /// Given a `Config`, try to parse the input stored in it as a number and print information.
 /// If the input can't be parsed as a `u128`, fall back to String.
 pub fn run(config: Config) {
     let input = config.input();
     let input_trim = input.trim();
 
-    if !try_prefix(input_trim, "0b", 2, &config) {
-        if !try_prefix(input_trim, "0o", 8, &config) {
-            if !try_prefix(input_trim, "0x", 16, &config) {
-                match input_trim.parse::<u128>() {
-                    Ok(v) => pass::integer::run(v, &config),
-                    Err(_) => pass::string::run(input, &config),
-                }
-            }
-        }
-    }
+    try_prefix_seq! {
+        input_trim, &config, match input_trim.parse::<u128>() {
+            Ok(v) => pass::integer::run(v, &config),
+            Err(_) => pass::string::run(input, &config),
+        };
+
+        "0b", 2, "0o", 8, "0x", 16,
+    };
 }
