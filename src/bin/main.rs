@@ -20,11 +20,9 @@ fn main() {
     • Binary:      0b101010
     • Octal:       0o52
     • Hexadecimal: 0x2A",
-                )
-                .required(true)
+                ).required(true)
                 .index(1),
-        )
-        .arg(
+        ).arg(
             Arg::with_name("ignored-passes")
                 .help("Ignore pass(-es)")
                 .short("p")
@@ -36,16 +34,15 @@ fn main() {
                     "radix",
                     "prime",
                     "power",
+                    "english",
                     // string
                     "structure",
                     "graphemes",
                     "words",
                     "bytes",
                     "modifications",
-                ])
-                .use_delimiter(true),
-        )
-        .get_matches();
+                ]).use_delimiter(true),
+        ).get_matches();
 
     let input = matches.value_of("input").unwrap();
     let ignored_passes = match matches.values_of("ignored-passes") {

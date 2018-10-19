@@ -3,11 +3,12 @@
 use super::*;
 use color;
 use primal::{as_perfect_power, is_prime};
+use english_numbers::{convert, Formatting};
 
 /// Run all passes with this `u128`.
 pub fn run(integer: u128, config: &Config) {
     color::found(&integer.to_string(), "u128");
-    pass_sequence!(&integer, config; radix, prime, power);
+    pass_sequence!(&integer, config; radix, prime, power, english);
 }
 
 /// Print this `u128` in different radixes.
@@ -54,7 +55,10 @@ fn prime(integer: &u128) {
 fn power(integer: &u128) {
     if *integer <= (u64::max_value() as u128) {
         let perfect_power = as_perfect_power(*integer as u64);
-        info!("perfect a^k", format!("{} ^ {}", perfect_power.0, perfect_power.1));
+        info!(
+            "perfect a^k",
+            format!("{} ^ {}", perfect_power.0, perfect_power.1)
+        );
     } else {
         na!("perfect a^k");
     }
@@ -72,4 +76,16 @@ fn power(integer: &u128) {
         Some(v) => info!("next 2^k", v),
         None => na!("next 2^k"),
     };
+}
+
+/// Print this `u128` in English.
+fn english(integer: &u128) {
+    if *integer <= (i64::max_value() as u128) {
+        let mut fmt = Formatting::all();
+        fmt.title_case = false;
+
+        info!("english", format!("\"{}\"", convert(*integer as i64, fmt)));
+    } else {
+        na!("english");
+    }
 }

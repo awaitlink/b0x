@@ -58,6 +58,7 @@
 //! ```
 
 extern crate colored;
+extern crate english_numbers;
 extern crate primal;
 extern crate unicode_segmentation;
 
