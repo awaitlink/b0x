@@ -34,6 +34,8 @@
 //!    perfect a^k 12648430 ^ 1
 //!    2^k? false
 //!    next 2^k 16777216
+//! ➔ english
+//!    english "twelve million, six hundred and forty-eight thousand, four hundred and thirty"
 //! ```
 //!
 //! #### Strings
