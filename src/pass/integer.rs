@@ -1,9 +1,9 @@
 //! Deals with unsigned integers (`u128`)
 
 use super::*;
-use color;
-use primal::{as_perfect_power, is_prime};
+use crate::color;
 use english_numbers::{convert, Formatting};
+use primal::{as_perfect_power, is_prime};
 
 /// Run all passes with this `u128`.
 pub fn run(integer: u128, config: &Config) {
@@ -71,7 +71,8 @@ fn power(integer: &u128) {
         integer.saturating_add(1)
     } else {
         *integer
-    }).checked_next_power_of_two()
+    })
+    .checked_next_power_of_two()
     {
         Some(v) => info!("next 2^k", v),
         None => na!("next 2^k"),

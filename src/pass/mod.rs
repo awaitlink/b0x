@@ -1,7 +1,7 @@
 //! Defines passes
 
-use super::colored::*;
-use config::Config;
+use colored::*;
+use crate::config::Config;
 
 const INFO_INDENT: &'static str = "   ";
 

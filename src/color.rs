@@ -1,4 +1,4 @@
-use super::colored::*;
+use colored::*;
 
 /// Print which type is recognized
 pub fn found(data: &str, ty: &str) {

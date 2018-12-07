@@ -59,16 +59,11 @@
 //!    lower test string
 //! ```
 
-extern crate colored;
-extern crate english_numbers;
-extern crate primal;
-extern crate unicode_segmentation;
-
 mod color;
 pub mod config;
 pub mod pass;
 
-use config::Config;
+use crate::config::Config;
 
 /// Try to parse a number which has a prefix which determines the radix,
 /// and print information if successful.

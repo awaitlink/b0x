@@ -1,7 +1,7 @@
 //! Deals with strings (`String`)
 
 use super::*;
-use color;
+use crate::color;
 use unicode_segmentation::UnicodeSegmentation;
 
 /// Run all passes with this `String`.

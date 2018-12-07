@@ -1,9 +1,5 @@
-#[macro_use]
-extern crate clap;
-extern crate b0x;
-
 use b0x::config::Config;
-use clap::{App, Arg};
+use clap::{App, Arg, crate_name, crate_version, crate_authors, crate_description};
 
 fn main() {
     let matches = App::new(crate_name!())
