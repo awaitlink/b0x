@@ -1,14 +1,14 @@
 [package]
 name = "b0x"
-version = "0.6.0"
+version = "0.7.0" # CHANGELOG.md
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
-description = "A simple CLI tool to display information about the provided input (integers or strings)."
+description = "A simple CLI tool to display information about the provided input (integers, IP addresses, strings)."
 exclude = ["img/*"]
 homepage = "https://github.com/u32i64/b0x#readme"
 repository = "https://github.com/u32i64/b0x"
 readme = "README.md"
-keywords = ["bin", "hex", "binary", "cli", "tool"]
-categories = ["command-line-utilities", "science"]
+keywords = ["ip", "hex", "binary", "cli", "tool"]
+categories = ["command-line-utilities", "science", "encoding"]
 license = "MIT"
 edition = "2018"
 
@@ -22,3 +22,4 @@ colored = "~1.6.1"
 unicode-segmentation = "~1.2.1"
 primal = "~0.2.3"
 english-numbers = "~0.3.3"
+termion = "1.5.1"

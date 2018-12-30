@@ -1,14 +1,12 @@
 //! Deals with unsigned integers (`u128`)
 
 use super::*;
-use crate::color;
 use english_numbers::{convert, Formatting};
-use primal::{as_perfect_power, is_prime};
+use primal::as_perfect_power;
 
 /// Run all passes with this `u128`.
 pub fn run(integer: u128, config: &Config) {
-    color::found(&integer.to_string(), "u128");
-    pass_sequence!(&integer, config; radix, prime, power, english);
+    pass_sequence!(&integer, config, "u128"; radix, is_prime, power, modifications, english);
 }
 
 /// Print this `u128` in different radixes.
@@ -43,9 +41,9 @@ fn radix(integer: &u128) {
 }
 
 /// Print if this `u128` is prime.
-fn prime(integer: &u128) {
+fn is_prime(integer: &u128) {
     if *integer <= (u64::max_value() as u128) {
-        info!("prime?", is_prime(*integer as u64));
+        info!("prime?", primal::is_prime(*integer as u64));
     } else {
         na!("prime?");
     }
@@ -77,6 +75,11 @@ fn power(integer: &u128) {
         Some(v) => info!("next 2^k", v),
         None => na!("next 2^k"),
     };
+}
+
+/// Print modifications of this `u128`.
+fn modifications(integer: &u128) {
+    info!("swap bytes", integer.swap_bytes())
 }
 
 /// Print this `u128` in English.

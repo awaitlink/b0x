@@ -1,7 +1,7 @@
 //! Defines passes
 
-use colored::*;
 use crate::config::Config;
+use colored::*;
 
 const INFO_INDENT: &'static str = "   ";
 
@@ -30,14 +30,16 @@ impl<T> Pass<T> {
 struct PassSequence<'a, T> {
     passes: Vec<Pass<T>>,
     config: &'a Config,
+    ty: String,
 }
 
-impl<'a, T> PassSequence<'a, T> {
+impl<'a, T: ToString> PassSequence<'a, T> {
     /// Create a new sequence of passes
-    pub fn new(config: &'a Config) -> Self {
+    pub fn new(config: &'a Config, ty: &str) -> Self {
         Self {
             passes: Vec::new(),
             config,
+            ty: String::from(ty),
         }
     }
 
@@ -48,6 +50,11 @@ impl<'a, T> PassSequence<'a, T> {
 
     /// Run passes in the sequence (except ignored ones)
     pub fn run(&self, input: &T) {
+        let data = input.to_string().red().bold();
+        let ty = self.ty.yellow().bold();
+
+        println!("{} {}({})", "found".white().bold(), ty, data);
+
         for pass in self.passes.iter() {
             if !self.config.is_ignored(&pass.name) {
                 println!("{} {}", "➔".white().bold(), &pass.name.magenta().bold());
@@ -66,8 +73,8 @@ impl<'a, T> PassSequence<'a, T> {
 }
 
 macro_rules! pass_sequence {
-    ($input:expr, $config:expr; $( $pass:expr ),*) => {
-        let mut seq = PassSequence::new($config);
+    ($input:expr, $config:expr, $ty:expr; $( $pass:expr ),*) => {
+        let mut seq = PassSequence::new($config, $ty);
 
         $( seq.add_pass(Pass::new(Box::new($pass), stringify!($pass))); )*
 
@@ -108,5 +115,6 @@ macro_rules! na {
     };
 }
 
+pub mod ip_addr;
 pub mod integer;
 pub mod string;

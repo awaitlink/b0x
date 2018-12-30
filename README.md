@@ -4,7 +4,7 @@
 [![downloads][badges/downloads]][crates.io/b0x]
 [![license][badges/license]][license]
 
-A simple CLI tool to display information about the provided input (integers or strings).
+A simple CLI tool to display information about the provided input (integers, IP addresses, strings).
 
 ### Installation
 ```console
@@ -17,26 +17,45 @@ $ cargo install b0x --force
 ```
 
 ### Usage
-#### Numbers
-Supported formats:
-- Decimal: `42`
-- Binary: `0b101010`
-- Octal: `0o52`
-- Hexadecimal: `0x2A`
+```console
+$ b0x <input>...
+```
+
+Supported data types:
+- IP addresses
+    - IPv4: `1.1.1.1`
+    - IPv6: `2606:4700:4700::1111`
+- Unsigned integers
+    - Binary: `0b101010`
+    - Octal: `0o52`
+    - Hexadecimal: `0x2A`
+    - Decimal: `42`
+- Strings
+
+See the built-in help for more information:
+```console
+$ b0x --help
+```
+
+### Examples
+
+```console
+$ b0x 1.1.1.1 2606:4700:4700::1111
+```
+
+![screenshot/ip]
 
 ```console
 $ b0x 0xC0FFEE
 ```
 
-![screenshot][demo-0xC0FFEE]
-
-#### Strings
+![screenshot/int]
 
 ```console
 $ b0x "TeSt StRiNg"
 ```
 
-![screenshot][demo-string]
+![screenshot/str]
 
 [crates.io/b0x]: https://crates.io/crates/b0x
 
@@ -47,5 +66,6 @@ $ b0x "TeSt StRiNg"
 [badges/downloads]: https://img.shields.io/crates/d/b0x.svg?style=for-the-badge
 [badges/license]: https://img.shields.io/crates/l/b0x.svg?style=for-the-badge
 
-[demo-0xC0FFEE]: https://raw.githubusercontent.com/u32i64/b0x/master/img/0xc0ffee.png
-[demo-string]: https://raw.githubusercontent.com/u32i64/b0x/master/img/string.png
+[screenshot/ip]: https://raw.githubusercontent.com/u32i64/b0x/master/img/ip.png
+[screenshot/int]: https://raw.githubusercontent.com/u32i64/b0x/master/img/int.png
+[screenshot/str]: https://raw.githubusercontent.com/u32i64/b0x/master/img/str.png

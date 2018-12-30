@@ -1,17 +1,16 @@
 //! Deals with strings (`String`)
 
 use super::*;
-use crate::color;
 use unicode_segmentation::UnicodeSegmentation;
 
 /// Run all passes with this `String`.
 pub fn run(string: &String, config: &Config) {
-    color::found(string, "string");
-    pass_sequence!(string, config; structure, graphemes, words, bytes, modifications);
+    pass_sequence!(string, config, "string"; structure, graphemes, words, bytes, modifications);
 }
 
 /// Print information about structure of this `String`.
 fn structure(string: &String) {
+    info!("empty?", string.is_empty());
     info!("ascii?", string.is_ascii());
 }
 
