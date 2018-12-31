@@ -1,6 +1,6 @@
 [package]
 name = "b0x"
-version = "0.7.0" # CHANGELOG.md
+version = "0.7.1" # CHANGELOG.md
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 description = "A simple CLI tool to display information about the provided input (integers, IP addresses, strings)."
 exclude = ["img/*"]

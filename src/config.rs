@@ -18,7 +18,7 @@ impl Config {
     /// Returns `true` if the pass is ignored in this `Config`
     pub fn is_ignored(&self, pass: &str) -> bool {
         self.ignored_passes
-            .contains(&pass.chars().next().unwrap().to_string())
+            .contains(&pass.chars().nth(0).unwrap().to_string())
     }
 
     /// Returns the `input` stored in this `Config`
