@@ -53,20 +53,14 @@ impl<'a, T: ToString> PassSequence<'a, T> {
         let data = input.to_string().red().bold();
         let ty = self.ty.yellow().bold();
 
-        println!("{} {}({})", "found".white().bold(), ty, data);
+        println!("found {}({})", ty, data);
 
         for pass in self.passes.iter() {
             if !self.config.is_ignored(&pass.name) {
-                println!("{} {}", "➔".white().bold(), &pass.name.magenta().bold());
-
+                println!("➔ {}", &pass.name.magenta().bold());
                 pass.run(input);
             } else {
-                println!(
-                    "{} {} {}",
-                    "✘".white().bold(),
-                    &pass.name.magenta().bold(),
-                    "ignored".white().bold()
-                );
+                println!("✘ {} ignored", &pass.name.magenta().bold());
             }
         }
     }
@@ -115,6 +109,6 @@ macro_rules! na {
     };
 }
 
-pub mod ip_addr;
 pub mod integer;
+pub mod ip_addr;
 pub mod string;

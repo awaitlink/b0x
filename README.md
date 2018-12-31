@@ -23,7 +23,7 @@ $ b0x <input>...
 
 Supported data types:
 - IP addresses
-    - IPv4: `1.1.1.1`
+    - IPv4: `127.0.0.1`
     - IPv6: `2606:4700:4700::1111`
 - Unsigned integers
     - Binary: `0b101010`

@@ -16,35 +16,41 @@ pub fn information(ip: &IpAddr) {
         IpAddr::V4(v) => {
             info!("type", "IPv4");
 
-            info!("kind", match v {
-                _ if v.is_unspecified() => "unspecified",
-                _ if v.is_loopback() => "loopback",
-                _ if v.is_multicast() => "multicast",
+            info!(
+                "kind",
+                match v {
+                    _ if v.is_unspecified() => "unspecified",
+                    _ if v.is_loopback() => "loopback",
+                    _ if v.is_multicast() => "multicast",
 
-                _ if v.is_private() => "private",
-                _ if v.is_link_local() => "link-local",
-                _ if v.is_broadcast() => "broadcast",
-                _ if v.is_documentation() => "documentation",
+                    _ if v.is_private() => "private",
+                    _ if v.is_link_local() => "link-local",
+                    _ if v.is_broadcast() => "broadcast",
+                    _ if v.is_documentation() => "documentation",
 
-                _ => &other,
-            });
+                    _ => &other,
+                }
+            );
 
             info!("octets", format!("{:?}", v.octets()));
-        },
+        }
         IpAddr::V6(v) => {
             info!("type", "IPv6");
 
-            info!("kind", match v {
-                _ if v.is_unspecified() => "unspecified",
-                _ if v.is_loopback() => "loopback",
-                _ if v.is_multicast() => "multicast",
+            info!(
+                "kind",
+                match v {
+                    _ if v.is_unspecified() => "unspecified",
+                    _ if v.is_loopback() => "loopback",
+                    _ if v.is_multicast() => "multicast",
 
-                _ => &other,
-            });
+                    _ => &other,
+                }
+            );
 
             info!("octets", format!("{:?}", v.octets()));
             info!("segments", format!("{:?}", v.segments()));
-        },
+        }
     }
 }
 
@@ -54,12 +60,12 @@ pub fn conversions(ip: &IpAddr) {
         IpAddr::V4(v) => {
             info!("ipv6 compatible", v.to_ipv6_compatible());
             info!("ipv6 mapped", v.to_ipv6_mapped());
-        },
+        }
         IpAddr::V6(v) => {
             match v.to_ipv4() {
                 Some(v) => info!("ipv4", v),
-                None => na!("ipv4")
+                None => na!("ipv4"),
             };
-        },
+        }
     }
 }

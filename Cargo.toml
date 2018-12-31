@@ -1,6 +1,6 @@
 [package]
 name = "b0x"
-version = "0.7.1" # CHANGELOG.md
+version = "0.7.2" # CHANGELOG.md
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 description = "A simple CLI tool to display information about the provided input (integers, IP addresses, strings)."
 exclude = ["img/*"]
@@ -22,4 +22,4 @@ colored = "~1.6.1"
 unicode-segmentation = "~1.2.1"
 primal = "~0.2.3"
 english-numbers = "~0.3.3"
-termion = "1.5.1"
+term_size = "~1.0.0-beta1"
