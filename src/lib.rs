@@ -1,3 +1,5 @@
+#![deny(missing_docs)]
+
 //! A simple CLI tool to display information about the provided input.
 //!
 //! See [`README.md`](https://github.com/u32i64/b0x#readme) for installation, usage, examples...
