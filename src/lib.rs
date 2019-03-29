@@ -5,8 +5,9 @@
 //! See [`README.md`](https://github.com/u32i64/b0x#readme) for installation, usage, examples...
 
 pub mod config;
-pub mod pass;
+pub mod passes;
 
+use passes::{integer::IntegerPasses, ip_addr::IpAddrPasses, string::StringPasses};
 use crate::config::Config;
 use std::net::IpAddr;
 
@@ -16,7 +17,7 @@ fn try_prefix(input: &str, prefix: &str, radix: u32, config: &Config) -> bool {
     if input.starts_with(prefix) {
         let clean_input = input.replacen(prefix, "", 1);
         if let Ok(integer) = u128::from_str_radix(&clean_input, radix) {
-            pass::integer::run(integer, config);
+            passes::run::<IntegerPasses>(&integer, config);
             return true;
         }
     }
@@ -43,11 +44,11 @@ pub fn run(config: Config) {
     let input_trim = input.trim();
 
     match input_trim.parse::<IpAddr>() {
-        Ok(v) => pass::ip_addr::run(&v, &config),
+        Ok(v) => passes::run::<IpAddrPasses>(&v, &config),
         Err(_) => try_prefix_seq! {
             input_trim, &config, match input_trim.parse::<u128>() {
-                Ok(v) => pass::integer::run(v, &config),
-                Err(_) => pass::string::run(input, &config),
+                Ok(v) => passes::run::<IntegerPasses>(&v, &config),
+                Err(_) => passes::run::<StringPasses>(input, &config),
             };
 
             "0b", 2,
