@@ -19,7 +19,7 @@ name = "b0x"
 [dependencies]
 clap = "~2.33.0"
 colored = "~1.8.0"
-unicode-segmentation = "~1.2.1"
+unicode-segmentation = "~1.3.0"
 primal = "~0.2.3"
 english-numbers = "~0.3.3"
 term_size = "~1.0.0-beta1"
