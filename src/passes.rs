@@ -16,7 +16,7 @@ pub enum Info {
 }
 
 /// One pass that gives related information regarding `T`.
-pub struct Pass<'a, T>(&'a str, &'a Fn(&T) -> Vec<(&'a str, Info)>);
+pub struct Pass<'a, T>(&'a str, &'a dyn Fn(&T) -> Vec<(&'a str, Info)>);
 
 impl<'a, T> Pass<'a, T> {
     fn name(&self) -> &'a str {
