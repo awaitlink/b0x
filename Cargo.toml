@@ -18,7 +18,7 @@ name = "b0x"
 
 [dependencies]
 clap = "~2.33.0"
-colored = "~1.8.0"
+colored = "~1.9.3"
 unicode-segmentation = "~1.3.0"
 primal = "~0.2.3"
 english-numbers = "~0.3.3"
