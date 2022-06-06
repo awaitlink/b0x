@@ -99,15 +99,15 @@ where
 
 macro_rules! push {
     ($result:ident, $name:expr, n / a) => {
-        $result.push(($name, $crate::passes::Info::NotAvailable));
+        $result.push(($name, $crate::passes::Info::NotAvailable))
     };
 
     ($result:ident, $name:expr, other) => {
-        $result.push(($name, $crate::passes::Info::Other));
+        $result.push(($name, $crate::passes::Info::Other))
     };
 
     ($result:ident, $name:expr, $value:expr) => {
-        $result.push(($name, $crate::passes::Info::Available($value.to_string())));
+        $result.push(($name, $crate::passes::Info::Available($value.to_string())))
     };
 }
 
